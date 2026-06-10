@@ -20,14 +20,17 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial,sans-serif;
 background:#000;
+font-family:Arial,sans-serif;
 overflow-x:hidden;
 }
 
 /* COVER */
 
 #cover{
+position:fixed;
+top:0;
+left:0;
 width:100%;
 height:100vh;
 background:#5a1a1a;
@@ -37,16 +40,18 @@ justify-content:center;
 align-items:center;
 text-align:center;
 color:white;
+z-index:9999;
 padding:20px;
 }
 
 #cover h1{
 font-size:30px;
 margin-bottom:25px;
+line-height:1.4;
 }
 
-button{
-padding:14px 22px;
+.cover-btn{
+padding:14px 24px;
 border:none;
 border-radius:30px;
 margin:8px;
@@ -55,35 +60,36 @@ cursor:pointer;
 font-weight:bold;
 }
 
-/* FOTO */
+/* GAMBAR UNDANGAN */
 
 #content img{
-width:100%;
-height:100vh;
-object-fit:cover;
 display:block;
+width:100%;
+height:auto;
 }
 
-/* TOMBOL BERANDA */
+/* TOMBOL HOME */
 
-.float{
+#homeBtn{
 position:fixed;
 bottom:20px;
 right:20px;
-z-index:9999;
+
+width:60px;
+height:60px;
+
+border:none;
+border-radius:50%;
 
 background:white;
-color:black;
-
-padding:12px 18px;
-border:none;
-border-radius:50px;
-
-font-size:14px;
-font-weight:bold;
+font-size:24px;
+cursor:pointer;
 
 box-shadow:0 4px 10px rgba(0,0,0,.3);
-cursor:pointer;
+
+display:none;
+
+z-index:10000;
 }
 
 </style>
@@ -106,11 +112,11 @@ Undangan Pernikahan<br>
 Alya & Wahyu
 </h1>
 
-<button onclick="openInvitation()">
+<button class="cover-btn" onclick="openInvitation()">
 💌 Buka Undangan
 </button>
 
-<button onclick="openMap()">
+<button class="cover-btn" onclick="openMap()">
 📍 Peta Lokasi Resepsi
 </button>
 
@@ -120,23 +126,19 @@ Alya & Wahyu
 
 <div id="content">
 
-<img src="halaman1.jpg">
-<img src="halaman2.jpg">
-<img src="halaman3.jpg">
-<img src="halaman4.jpg">
-<img src="halaman5.jpg">
-<img src="halaman6.jpg">
+<img src="halaman1.jpg" alt="">
+<img src="halaman2.jpg" alt="">
+<img src="halaman3.jpg" alt="">
+<img src="halaman4.jpg" alt="">
+<img src="halaman5.jpg" alt="">
+<img src="halaman6.jpg" alt="">
 
 </div>
 
 <!-- TOMBOL BERANDA -->
 
-<button
-id="backBtn"
-class="float"
-onclick="backHome()"
-style="display:none;">
-🏠 Beranda
+<button id="homeBtn" onclick="showCover()">
+🏠
 </button>
 
 <script>
@@ -145,17 +147,22 @@ const music = document.getElementById("music");
 let started = false;
 
 function startMusic(){
+
 if(!started){
-music.play();
+
+music.play().catch(() => {});
+
 started = true;
+
 }
+
 }
 
 function openInvitation(){
 
-document.getElementById("cover").style.display="none";
+document.getElementById("cover").style.display = "none";
 
-document.getElementById("backBtn").style.display="block";
+document.getElementById("homeBtn").style.display = "block";
 
 window.scrollTo({
 top:0,
@@ -163,18 +170,20 @@ behavior:"smooth"
 });
 
 startMusic();
+
 }
 
-function backHome(){
+function showCover(){
 
-document.getElementById("cover").style.display="flex";
+document.getElementById("cover").style.display = "flex";
 
-document.getElementById("backBtn").style.display="none";
+document.getElementById("homeBtn").style.display = "none";
 
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
+
 }
 
 function openMap(){
