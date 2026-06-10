@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Pernikahan</title>
+
+<title>Undangan Pernikahan Alya & Wahyu</title>
 
 <style>
 
@@ -19,51 +20,70 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:sans-serif;
+font-family:Arial,sans-serif;
 background:#000;
+overflow-x:hidden;
 }
 
 /* COVER */
+
 #cover{
 width:100%;
 height:100vh;
-background:#5a1a1a; /* MAROON */
+background:#5a1a1a;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-color:white;
 text-align:center;
+color:white;
+padding:20px;
 }
 
 #cover h1{
-font-size:28px;
-margin-bottom:20px;
+font-size:30px;
+margin-bottom:25px;
 }
 
 button{
-padding:12px 20px;
+padding:14px 22px;
 border:none;
 border-radius:30px;
-margin:10px;
+margin:8px;
 font-size:16px;
 cursor:pointer;
+font-weight:bold;
 }
 
-/* SECTION FOTO */
-.section img{
+/* FOTO */
+
+#content img{
 width:100%;
 height:100vh;
 object-fit:cover;
 display:block;
 }
 
-/* BUTTON FLOAT */
+/* TOMBOL BERANDA */
+
 .float{
 position:fixed;
 bottom:20px;
 right:20px;
-z-index:999;
+z-index:9999;
+
+background:white;
+color:black;
+
+padding:12px 18px;
+border:none;
+border-radius:50px;
+
+font-size:14px;
+font-weight:bold;
+
+box-shadow:0 4px 10px rgba(0,0,0,.3);
+cursor:pointer;
 }
 
 </style>
@@ -72,24 +92,32 @@ z-index:999;
 <body onclick="startMusic()">
 
 <!-- MUSIK -->
+
 <audio id="music" loop>
 <source src="musik.mp3" type="audio/mpeg">
 </audio>
 
 <!-- COVER -->
+
 <div id="cover">
-<h1>Undangan Pernikahan Alya & Wahyu</h1>
+
+<h1>
+Undangan Pernikahan<br>
+Alya & Wahyu
+</h1>
 
 <button onclick="openInvitation()">
-Buka Undangan
+💌 Buka Undangan
 </button>
 
 <button onclick="openMap()">
-Peta Lokasi Resepsi
+📍 Peta Lokasi Resepsi
 </button>
+
 </div>
 
 <!-- ISI UNDANGAN -->
+
 <div id="content">
 
 <img src="halaman1.jpg">
@@ -100,6 +128,16 @@ Peta Lokasi Resepsi
 <img src="halaman6.jpg">
 
 </div>
+
+<!-- TOMBOL BERANDA -->
+
+<button
+id="backBtn"
+class="float"
+onclick="backHome()"
+style="display:none;">
+🏠 Beranda
+</button>
 
 <script>
 
@@ -114,13 +152,38 @@ started = true;
 }
 
 function openInvitation(){
+
 document.getElementById("cover").style.display="none";
-document.getElementById("content").scrollIntoView();
+
+document.getElementById("backBtn").style.display="block";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 startMusic();
 }
 
+function backHome(){
+
+document.getElementById("cover").style.display="flex";
+
+document.getElementById("backBtn").style.display="none";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+
 function openMap(){
-window.open("https://www.google.com/maps?q=Royal+Ambarrukmo+Yogyakarta");
+
+window.open(
+"https://www.google.com/maps?q=Royal+Ambarrukmo+Yogyakarta",
+"_blank"
+);
+
 }
 
 </script>
