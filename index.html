@@ -5,193 +5,164 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Undangan Pernikahan Alya & Wahyu</title>
+<title>Undangan Pernikahan</title>
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-background:#000;
-font-family:Arial,sans-serif;
-overflow-x:hidden;
+    background:#000;
+    overflow-x:hidden;
+    font-family:Arial, sans-serif;
 }
 
 /* COVER */
 
 #cover{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-background:#5a1a1a;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:white;
-z-index:9999;
-padding:20px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#5a1a1a;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    z-index:9999;
+    padding:20px;
 }
 
 #cover h1{
-font-size:30px;
-margin-bottom:25px;
-line-height:1.4;
+    font-size:32px;
+    margin-bottom:15px;
 }
 
-.cover-btn{
-padding:14px 24px;
-border:none;
-border-radius:30px;
-margin:8px;
-font-size:16px;
-cursor:pointer;
-font-weight:bold;
+#cover p{
+    margin-bottom:30px;
+    font-size:16px;
 }
 
-/* GAMBAR UNDANGAN */
-
-#content img{
-display:block;
-width:100%;
-height:auto;
+.btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    margin:8px;
+    font-size:16px;
 }
 
-/* TOMBOL HOME */
+/* GAMBAR */
 
-#homeBtn{
-position:fixed;
-bottom:20px;
-right:20px;
+img{
+    width:100%;
+    height:100vh;
+    object-fit:cover;
+    display:block;
+}
 
-width:60px;
-height:60px;
+/* TOMBOL MUSIK */
 
-border:none;
-border-radius:50%;
-
-background:white;
-font-size:24px;
-cursor:pointer;
-
-box-shadow:0 4px 10px rgba(0,0,0,.3);
-
-display:none;
-
-z-index:10000;
+.music-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:50%;
+    font-size:24px;
+    cursor:pointer;
+    z-index:999;
 }
 
 </style>
 </head>
 
-<body onclick="startMusic()">
-
-<!-- MUSIK -->
-
-<audio id="music" loop>
-<source src="musik.mp3" type="audio/mpeg">
-</audio>
+<body>
 
 <!-- COVER -->
 
 <div id="cover">
 
-<h1>
-Undangan Pernikahan<br>
-Alya & Wahyu
-</h1>
+    <h1>Undangan Pernikahan</h1>
 
-<button class="cover-btn" onclick="openInvitation()">
-💌 Buka Undangan
-</button>
+    <p>Dengan hormat mengundang Anda untuk hadir</p>
 
-<button class="cover-btn" onclick="openMap()">
-📍 Peta Lokasi Resepsi
-</button>
+    <button class="btn" onclick="openInvitation()">
+        Buka Undangan
+    </button>
 
-</div>
-
-<!-- ISI UNDANGAN -->
-
-<div id="content">
-
-<img src="halaman1.jpg" alt="">
-<img src="halaman2.jpg" alt="">
-<img src="halaman3.jpg" alt="">
-<img src="halaman4.jpg" alt="">
-<img src="halaman5.jpg" alt="">
-<img src="halaman6.jpg" alt="">
+    <button class="btn" onclick="openMap()">
+        Peta Lokasi Resepsi
+    </button>
 
 </div>
 
-<!-- TOMBOL BERANDA -->
+<!-- AUDIO -->
 
-<button id="homeBtn" onclick="showCover()">
-🏠
+<audio id="music" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- TOMBOL MUSIK -->
+
+<button class="music-btn" onclick="toggleMusic()">
+🎵
 </button>
+
+<!-- HALAMAN UNDANGAN -->
+
+<img src="halaman1.jpg">
+<img src="halaman2.jpg">
+<img src="halaman3.jpg">
+<img src="halaman4.jpg">
+<img src="halaman5.jpg">
+<img src="halaman6.jpg">
 
 <script>
 
 const music = document.getElementById("music");
-let started = false;
-
-function startMusic(){
-
-if(!started){
-
-music.play().catch(() => {});
-
-started = true;
-
-}
-
-}
 
 function openInvitation(){
 
-document.getElementById("cover").style.display = "none";
+    music.play();
 
-document.getElementById("homeBtn").style.display = "block";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-startMusic();
-
-}
-
-function showCover(){
-
-document.getElementById("cover").style.display = "flex";
-
-document.getElementById("homeBtn").style.display = "none";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+    document.getElementById("cover").style.display = "none";
 
 }
 
 function openMap(){
 
-window.open(
-"https://www.google.com/maps?q=Royal+Ambarrukmo+Yogyakarta",
-"_blank"
-);
+    window.open(
+    "https://www.google.com/maps/search/?api=1&query=Royal+Ambarrukmo+Yogyakarta",
+    "_blank"
+    );
+
+}
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+    }else{
+
+        music.pause();
+
+    }
 
 }
 
