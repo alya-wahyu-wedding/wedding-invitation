@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="id">
 
 <head>
@@ -12,11 +11,12 @@
 <meta property="og:title" content="Undangan Pernikahan Alya & Wahyu">
 <meta property="og:description" content="Kami mengundang Anda untuk hadir pada hari bahagia kami">
 <meta property="og:image" content="https://alya-wahyu-wedding.github.io/wedding-invitation/thumbnail.png">
+<meta property="og:image:width" content="1731">
+<meta property="og:image:height" content="909">
 <meta property="og:url" content="https://alya-wahyu-wedding.github.io/wedding-invitation/">
 <meta property="og:type" content="website">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://alya-wahyu-wedding.github.io/wedding-invitation/thumbnail.png">
 
 <style>
 
@@ -36,68 +36,61 @@ overflow-x:hidden;
 font-family:Georgia, serif;
 }
 
+/* COVER */
+
 #cover{
-position:fixed;
-top:0;
-left:0;
+position:relative;
 width:100%;
-height:100vh;
-background:#6d0015;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-z-index:9999;
+max-width:700px;
+margin:auto;
 }
 
-#cover h1{
-color:white;
-font-size:34px;
-margin-bottom:10px;
+.cover-img{
+width:100%;
+display:block;
 }
 
-#cover h2{
-color:#f3d9a2;
-font-size:28px;
-margin-bottom:40px;
-}
+/* AREA KLIK TRANSPARAN */
 
-.btn{
-padding:15px 28px;
-margin:8px;
-border:none;
-border-radius:12px;
-font-size:18px;
+.btn-buka{
+position:absolute;
+width:18%;
+height:10%;
+left:24%;
+bottom:10%;
 cursor:pointer;
-font-weight:bold;
 }
 
-.btn-open{
-background:#f3d9a2;
-color:#6d0015;
+.btn-peta{
+position:absolute;
+width:18%;
+height:10%;
+right:24%;
+bottom:10%;
+cursor:pointer;
 }
 
-.btn-map{
-background:white;
-color:#6d0015;
-text-decoration:none;
-display:inline-block;
-}
+/* KONTEN */
 
 #content{
 display:none;
 max-width:700px;
 margin:auto;
 background:white;
+animation:fade .5s;
 }
 
 .page{
 width:100%;
-height:auto;
 display:block;
 }
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+/* FLOAT BUTTON */
 
 .floating{
 position:fixed;
@@ -110,16 +103,22 @@ z-index:999;
 }
 
 .float-btn{
-width:56px;
-height:56px;
+
+width:70px;
+height:70px;
+
 border:none;
 border-radius:50%;
-font-size:24px;
+
+font-size:14px;
+font-weight:bold;
+
 cursor:pointer;
+
 box-shadow:0 4px 10px rgba(0,0,0,.25);
 }
 
-.location{
+.peta{
 background:#d4af37;
 color:white;
 }
@@ -139,23 +138,23 @@ color:white;
 <source src="musik.mp3" type="audio/mpeg">
 </audio>
 
+<!-- COVER -->
+
 <div id="cover">
 
-<h1>Undangan Pernikahan</h1>
+<img src="cover.jpg" class="cover-img">
 
-<h2>Alya & Wahyu</h2>
-
-<button class="btn btn-open" onclick="bukaUndangan()">
-Buka Undangan
-</button>
+<div class="btn-buka" onclick="bukaUndangan()"></div>
 
 <a
-class="btn btn-map"
+class="btn-peta"
 target="_blank"
 href="https://www.google.com/maps/search/?api=1&query=Royal+Ambarrukmo+Yogyakarta">
-Buka Lokasi Pernikahan </a>
+</a>
 
 </div>
+
+<!-- ISI UNDANGAN -->
 
 <div id="content">
 
@@ -168,17 +167,21 @@ Buka Lokasi Pernikahan </a>
 
 </div>
 
+<!-- FLOAT BUTTON -->
+
 <div class="floating">
 
 <button
-class="float-btn location"
+class="float-btn peta"
 onclick="window.open('https://www.google.com/maps/search/?api=1&query=Royal+Ambarrukmo+Yogyakarta')">
-📍 </button>
+PETA
+</button>
 
 <button
 class="float-btn home"
 onclick="kembaliHome()">
-🏠 </button>
+HOME
+</button>
 
 </div>
 
@@ -189,6 +192,7 @@ const musik = document.getElementById("musik");
 function bukaUndangan(){
 
 document.getElementById("cover").style.display="none";
+
 document.getElementById("content").style.display="block";
 
 musik.play();
@@ -203,7 +207,8 @@ behavior:'smooth'
 function kembaliHome(){
 
 document.getElementById("content").style.display="none";
-document.getElementById("cover").style.display="flex";
+
+document.getElementById("cover").style.display="block";
 
 window.scrollTo({
 top:0,
