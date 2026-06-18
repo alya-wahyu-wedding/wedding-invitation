@@ -127,6 +127,71 @@ background:#d4af37;
 color:white;
 }
 
+/* =======================
+   FLOWER & SPARKLE EFFECT
+======================= */
+
+#effects{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:999;
+}
+
+.petal{
+position:absolute;
+top:-50px;
+font-size:18px;
+opacity:.35;
+animation:fall linear infinite;
+}
+
+.p1{left:5%;animation-duration:12s;}
+.p2{left:15%;animation-duration:15s;}
+.p3{left:30%;animation-duration:18s;}
+.p4{left:45%;animation-duration:13s;}
+.p5{left:60%;animation-duration:17s;}
+.p6{left:75%;animation-duration:14s;}
+.p7{left:90%;animation-duration:16s;}
+
+@keyframes fall{
+0%{
+transform:translateY(-50px) rotate(0deg);
+}
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+.sparkle{
+position:absolute;
+width:4px;
+height:4px;
+border-radius:50%;
+background:#ffd700;
+opacity:.5;
+animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+0%{
+opacity:.2;
+transform:scale(.5);
+}
+50%{
+opacity:1;
+transform:scale(1.4);
+}
+100%{
+opacity:.2;
+transform:scale(.5);
+}
+}
+
 </style>
 
 </head>
@@ -162,6 +227,24 @@ target="_blank"> </a>
 <img src="halaman4.jpg" class="page">
 <img src="halaman5.jpg" class="page">
 <img src="halaman6.jpg" class="page">
+
+</div>
+
+<div id="effects">
+
+<div class="petal p1">🌸</div>
+<div class="petal p2">🌸</div>
+<div class="petal p3">🌸</div>
+<div class="petal p4">🌸</div>
+<div class="petal p5">🌸</div>
+<div class="petal p6">🌸</div>
+<div class="petal p7">🌸</div>
+
+<div class="sparkle" style="top:10%;left:20%;"></div>
+<div class="sparkle" style="top:25%;left:70%;"></div>
+<div class="sparkle" style="top:40%;left:15%;"></div>
+<div class="sparkle" style="top:55%;left:85%;"></div>
+<div class="sparkle" style="top:75%;left:40%;"></div>
 
 </div>
 
