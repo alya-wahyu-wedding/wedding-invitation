@@ -23,79 +23,6 @@
 
 <style>
 
-/* ======================
-GOLD LEAF EFFECT
-====================== */
-
-#effects{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-z-index:999;
-}
-
-.leaf{
-position:absolute;
-top:-100px;
-font-size:18px;
-color:#d4af37;
-opacity:.35;
-animation:fall linear infinite;
-}
-
-.l1{left:5%;animation-duration:18s;}
-.l2{left:18%;animation-duration:22s;}
-.l3{left:30%;animation-duration:20s;}
-.l4{left:42%;animation-duration:24s;}
-.l5{left:58%;animation-duration:19s;}
-.l6{left:72%;animation-duration:23s;}
-.l7{left:86%;animation-duration:21s;}
-.l8{left:95%;animation-duration:25s;}
-
-@keyframes fall{
-
-0%{
-transform:
-translateY(-100px)
-translateX(0px)
-rotate(0deg);
-}
-
-25%{
-transform:
-translateY(25vh)
-translateX(20px)
-rotate(90deg);
-}
-
-50%{
-transform:
-translateY(50vh)
-translateX(-20px)
-rotate(180deg);
-}
-
-75%{
-transform:
-translateY(75vh)
-translateX(25px)
-rotate(270deg);
-}
-
-100%{
-transform:
-translateY(110vh)
-translateX(-25px)
-rotate(360deg);
-}
-
-}
-
-
 *{
 margin:0;
 padding:0;
@@ -200,54 +127,6 @@ background:#d4af37;
 color:white;
 }
 
-/* ======================
-GOLD SHINE HALAMAN 1
-====================== */
-
-.page-wrap{
-position:relative;
-}
-
-.gold-shine{
-position:absolute;
-top:0;
-left:-150%;
-width:40%;
-height:100%;
-pointer-events:none;
-
-background:linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.65),
-transparent
-);
-
-transform:skewX(-25deg);
-
-animation:goldShine 6s ease-in-out infinite;
-}
-
-@keyframes goldShine{
-
-0%{
-left:-150%;
-}
-
-45%{
-left:130%;
-}
-
-55%{
-left:130%;
-}
-
-100%{
-left:-150%;
-}
-
-}
-
 </style>
 
 </head>
@@ -257,18 +136,6 @@ left:-150%;
 <audio id="musik" loop>
 <source src="musik.mp3" type="audio/mpeg">
 </audio>
-
-<div id="effects">
-
-<div class="leaf l1">✦</div>
-<div class="leaf l2">❀</div>
-<div class="leaf l3">✦</div>
-<div class="leaf l4">❀</div>
-<div class="leaf l5">✦</div>
-<div class="leaf l6">❀</div>
-
-</div>
-
 
 <!-- COVER -->
 
@@ -289,13 +156,7 @@ target="_blank"> </a>
 
 <div id="content">
 
-<div class="page-wrap">
-
 <img src="halaman1.jpg" class="page">
-
-<div class="gold-shine"></div>
-
-</div>
 <img src="halaman2.jpg" class="page">
 <img src="halaman3.jpg" class="page">
 <img src="halaman4.jpg" class="page">
