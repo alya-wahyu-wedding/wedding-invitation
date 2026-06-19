@@ -39,6 +39,38 @@ overflow-x:hidden;
 font-family:Georgia, serif;
 }
 
+/* ======================
+OPENING VIDEO
+====================== */
+
+#opening{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:#000;
+z-index:99999;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+opacity:1;
+transition:opacity 1.5s ease;
+}
+
+#opening.hide{
+opacity:0;
+pointer-events:none;
+}
+
+#opening video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
 /* COVER */
 
 #cover{
@@ -133,6 +165,22 @@ color:white;
 
 <body>
 
+<!-- OPENING VIDEO -->
+
+<div id="opening">
+
+<video
+id="openingVideo"
+autoplay
+muted
+playsinline>
+
+<source src="opening.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
 <audio id="musik" loop>
 <source src="musik.mp3" type="audio/mpeg">
 </audio>
@@ -184,6 +232,24 @@ HOME </button>
 <script>
 
 const musik = document.getElementById("musik");
+
+const openingVideo =
+document.getElementById("openingVideo");
+
+openingVideo.addEventListener("ended",()=>{
+
+const opening =
+document.getElementById("opening");
+
+opening.classList.add("hide");
+
+setTimeout(()=>{
+
+opening.style.display="none";
+
+},1500);
+
+});
 
 function bukaUndangan(){
 
